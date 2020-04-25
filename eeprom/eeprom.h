@@ -22,7 +22,7 @@ typedef enum
   EEPROM_ERROR    = 0x01U
 } EepromStatusTypeDef;
 
-EepromStatusTypeDef     EepromInit(Eeprom_t * eeprom, void * startAddress, uint16_t len);
+EepromStatusTypeDef     EepromInit(Eeprom_t * eeprom, uint8_t firstPage,  uint8_t secondPage, uint8_t sizePage);
 
 EepromStatusTypeDef     EepromReadByte(Eeprom_t * eeprom, uint16_t addr, uint8_t * byte);
 EepromStatusTypeDef     EepromReadBytes(Eeprom_t * eeprom, uint16_t addr, uint8_t * data, uint8_t size);
