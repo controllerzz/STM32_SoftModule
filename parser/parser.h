@@ -51,5 +51,6 @@ ParserState_t parserState(Parser_t * parser);
 uint8_t parserHowArg(Parser_t * parser);
 ParserReturn_t parserGetArg(Parser_t * parser, uint8_t num, uint8_t * arg);
 uint8_t * parserGetArgPointer(Parser_t * parser, uint8_t num);
+ParserReturn_t parserArgCmp(Parser_t * parser, uint8_t num, uint8_t * str);
 
 #endif

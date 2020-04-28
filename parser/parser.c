@@ -85,3 +85,24 @@ uint8_t * parserGetArgPointer(Parser_t * parser, uint8_t num)
   
   return 0;
 }
+
+ParserReturn_t parserArgCmp(Parser_t * parser, uint8_t num, uint8_t * str)
+{
+  if(parser->state == PARSER_FINISH && parser->argsLen >= num)
+  {
+    uint8_t * ptr = parserGetArgPointer(parser, num);
+
+    if(ptr == 0)
+      return PARSER_RET_ERROR;
+
+    while(*ptr != parser->split && *ptr != parser->end && *str)
+    {
+      if(*str++ != *ptr++)
+        return PARSER_RET_ERROR;
+    }
+    if((*ptr == parser->split || *ptr == parser->end) && *str == 0)
+      return PARSER_RET_OK;
+  }
+  
+  return PARSER_RET_ERROR;
+}
