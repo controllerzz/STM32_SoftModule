@@ -7,6 +7,8 @@
 #include "stm32f0xx_hal.h"
 #elif defined(STM32F042x6)
 #include "stm32f0xx_hal.h"
+#elif defined(STM32F103xE)
+#include "stm32f1xx_hal.h"
 #else
   #error "module for MCU not support"
 #endif
