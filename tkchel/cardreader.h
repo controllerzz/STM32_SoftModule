@@ -29,15 +29,15 @@ typedef struct
   uint8_t addr;
   uint8_t func;
   uint8_t len;
-  uint32_t data0;
   uint32_t data1;
+  uint32_t data0;
   uint16_t crc;
 } CardReaderAnswer_t;
 #pragma pack(pop)
 
 typedef enum
 {
-  CARDREADER_DELAY,
+  CARDREADER_DELAY = 0,
   CARDREADER_START,
   CARDREADER_FINISH
 } CardReaderState_t;

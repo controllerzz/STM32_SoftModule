@@ -6,6 +6,7 @@ CardReaderState_t CardReaderRxByte(CardReader_t * cr, uint8_t byte)
   {
   case CARDREADER_FINISH:
       cr->state = CARDREADER_DELAY;
+
   case CARDREADER_DELAY:
     if(byte == cr->addr){
       cr->state = CARDREADER_START;
@@ -13,10 +14,9 @@ CardReaderState_t CardReaderRxByte(CardReader_t * cr, uint8_t byte)
       cr->head = 1;
     }
     break;
-    
+
   case CARDREADER_START:
     ((uint8_t *) &cr->request)[cr->head++] = byte;
-    
     if(cr->head >= sizeof(CardReaderRequest_t)){
       cr->state = CARDREADER_FINISH;
     }
@@ -24,6 +24,7 @@ CardReaderState_t CardReaderRxByte(CardReader_t * cr, uint8_t byte)
 
   default:
     cr->state = CARDREADER_DELAY;
+    break;
   }
   
   return cr->state;
